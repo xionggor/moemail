@@ -1,6 +1,5 @@
 import { NextIntlClientProvider } from "next-intl"
 import { notFound } from "next/navigation"
-import { getTranslations } from "next-intl/server"
 import { i18n, type Locale } from "@/i18n/config"
 import type { Metadata, Viewport } from "next"
 import { FloatMenu } from "@/components/float-menu"
@@ -43,7 +42,6 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: localeFromParams } = await params
   const locale = localeFromParams as Locale
-  const t = await getTranslations({ locale, namespace: "metadata" })
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://moemail.app"
   

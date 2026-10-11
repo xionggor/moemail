@@ -14,7 +14,7 @@ import { Providers } from "../providers"
 export const runtime = "edge"
 
 export const viewport: Viewport = {
-  themeColor: '#826DD9',
+  themeColor: '#000000',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
@@ -54,12 +54,11 @@ export async function generateMetadata({
   })
 
   return {
-    title: t("title"),
-    description: t("description"),
-    keywords: t("keywords"),
-    authors: [{ name: "SoftMoe Studio" }],
-    creator: "SoftMoe Studio",
-    publisher: "SoftMoe Studio",
+    title: "Cheaper Brothers - 临时邮箱",
+    description: "安全、快速、一次性的临时邮箱地址，保护您的隐私。",
+    authors: [{ name: "Cheaper Brothers" }],
+    creator: "Cheaper Brothers",
+    publisher: "Cheaper Brothers",
     robots: {
       index: true,
       follow: true,
@@ -72,14 +71,14 @@ export async function generateMetadata({
       type: "website",
       locale: locale === "zh-CN" ? "zh_CN" : locale === "zh-TW" ? "zh_TW" : locale,
       url: `${baseUrl}/${locale}`,
-      title: t("title"),
-      description: t("description"),
-      siteName: "MoeMail",
+      title: "Cheaper Brothers - 临时邮箱",
+      description: "安全、快速、一次性的临时邮箱地址，保护您的隐私。",
+      siteName: "Cheaper Brothers",
     },
     twitter: {
       card: "summary_large_image",
-      title: t("title"),
-      description: t("description"),
+      title: "Cheaper Brothers - 临时邮箱",
+      description: "安全、快速、一次性的临时邮箱地址，保护您的隐私。",
     },
     alternates: {
       canonical: `${baseUrl}/${locale}`,
@@ -108,12 +107,12 @@ export default async function LocaleLayout({
   const messages = await getMessages(locale)
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning className="dark">
       <head>
-        <meta name="application-name" content="MoeMail" />
+        <meta name="application-name" content="Cheaper Brothers" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="MoeMail" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Cheaper Brothers" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
@@ -121,16 +120,16 @@ export default async function LocaleLayout({
         className={cn(
           zpix.variable,
           "font-zpix min-h-screen antialiased",
-          "bg-background text-foreground",
+          "bg-black text-white",
           "transition-colors duration-300"
         )}
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange={false}
-          storageKey="temp-mail-theme"
+          storageKey="cheaper-bros-theme"
         >
           <Providers>
             <NextIntlClientProvider locale={locale} messages={messages}>
@@ -144,4 +143,3 @@ export default async function LocaleLayout({
     </html>
   )
 }
-

@@ -2,7 +2,6 @@ import { Header } from "@/components/layout/header"
 import { auth } from "@/lib/auth"
 import { ActionButton } from "@/components/home/action-button"
 import { FeatureCard } from "@/components/home/feature-card"
-import type { Locale } from "@/i18n/config"
 
 export const runtime = "edge"
 
@@ -11,8 +10,7 @@ export default async function Home({
 }: {
   params: Promise<{ locale: string }>
 }) {
-  const { locale: localeFromParams } = await params
-  const locale = localeFromParams as Locale
+  await params
   const session = await auth()
 
   return (

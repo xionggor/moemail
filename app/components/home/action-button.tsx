@@ -1,9 +1,8 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Mail } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { useTranslations, useLocale } from "next-intl"
+import { useLocale } from "next-intl"
 import { SignButton } from "../auth/sign-button"
 
 interface ActionButtonProps {
@@ -13,20 +12,18 @@ interface ActionButtonProps {
 export function ActionButton({ isLoggedIn }: ActionButtonProps) {
   const router = useRouter()
   const locale = useLocale()
-  const t = useTranslations("home")
 
   if (isLoggedIn) {
     return (
       <Button 
         size="lg" 
         onClick={() => router.push(`/${locale}/moe`)}
-        className="gap-2 bg-primary hover:bg-primary/90 text-white px-8"
+        className="gap-2 bg-white hover:bg-white/90 text-black px-12 h-12 text-sm tracking-widest uppercase"
       >
-        <Mail className="w-5 h-5" />
-        {t("actions.enterMailbox")}
+        进入邮箱
       </Button>
     )
   }
 
   return <SignButton size="lg" />
-} 
+}
